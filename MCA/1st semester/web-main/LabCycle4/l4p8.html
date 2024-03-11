@@ -1,0 +1,42 @@
+<html>
+<head>
+<style>
+h1{
+    color:green;
+    text-decoration:underline;
+}
+p{
+  color:green;
+  font-size:40px;
+}
+</style>
+</head>
+<body>
+  <br><br><br>
+  <center>
+  <h1>Calculate Your Age</h1><br><br>
+  <label for="firstNameInput">First Name:</label>
+  <input type="text" id="firstNameInput">
+  <br><br>
+  <label for="yearOfBirthInput">Year of Birth:</label>
+  <input type="text" id="yearOfBirthInput">
+  <br><br>
+  <button id="calculateAgeButton">Calculate Age</button>
+  <p id="result"></p>
+
+  <script>
+    document.getElementById("calculateAgeButton").addEventListener("click", function() {
+      // Get user inputs
+      const firstName = document.getElementById("firstNameInput").value;
+      const yearOfBirth = document.getElementById("yearOfBirthInput").value;
+
+      // Calculate age
+      const currentYear = new Date().getFullYear();
+      const age = currentYear - parseInt(yearOfBirth);
+
+      // Display the age on the web page
+      document.getElementById("result").textContent = `${firstName}, you are ${age} years old.`;
+    });
+  </script>
+</body>
+</html>

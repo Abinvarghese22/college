@@ -1,0 +1,206 @@
+Enter password: ********
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.3.0 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use mangalam;
+Database changed
+mysql> select * from emp;
++-------+-------------+------------+----------+---------+----------+----------+---------+---------+
+| EmpNo | EmpName     | Job        | Basic    | PF      | GrossPay | NetPay   | DA      | HRA     |
++-------+-------------+------------+----------+---------+----------+----------+---------+---------+
+|     1 | John Doe    | Manager    | 15000.00 | 1800.00 | 25500.00 | 23700.00 | 4500.00 | 6000.00 |
+|     2 | Jane Smith  | Developer  | 12000.00 | 1440.00 | 20400.00 | 18960.00 | 3600.00 | 4800.00 |
+|     3 | Bob Johnson | Accountant | 18000.00 | 2160.00 | 30600.00 | 28440.00 | 5400.00 | 7200.00 |
+|     4 | Alice Brown | HR         | 11000.00 | 1320.00 | 18700.00 | 17380.00 | 3300.00 | 4400.00 |
+|     5 | Charlie Lee | Analyst    | 16000.00 | 1920.00 | 27200.00 | 25280.00 | 4800.00 | 6400.00 |
++-------+-------------+------------+----------+---------+----------+----------+---------+---------+
+5 rows in set (0.66 sec)
+
+mysql> create table Dept(deptno int primary key not null,dname varchar(40),loc varchar(45));
+Query OK, 0 rows affected (1.07 sec)
+
+mysql> create table emp1(empno int primary key not null,ename varchar(40),job varchar(45),mgr varchar(35),hiredate date,sal int,comm varchar(35),deptno int);
+Query OK, 0 rows affected (0.49 sec)
+
+mysql> insert into Dept values(12,"nandhakumar","changanacherry");
+Query OK, 1 row affected (0.14 sec)
+
+mysql> insert into Dept values(17,"mahesh","ernakulam");
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into emp1 values(14,"abhitha","developer","mgr",'2022-06-23',41000,"wewr",12);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into emp1 values(15,"abhiram","sweeper","mgr",'2024-02-13',40000,"wewr",17);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * from dept;
++--------+-------------+----------------+
+| deptno | dname       | loc            |
++--------+-------------+----------------+
+|     12 | nandhakumar | changanacherry |
+|     17 | mahesh      | ernakulam      |
++--------+-------------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> select * from emp1;
++-------+---------+-----------+------+------------+-------+------+--------+
+| empno | ename   | job       | mgr  | hiredate   | sal   | comm | deptno |
++-------+---------+-----------+------+------------+-------+------+--------+
+|    14 | abhitha | developer | mgr  | 2022-06-23 | 41000 | wewr |     12 |
+|    15 | abhiram | sweeper   | mgr  | 2024-02-13 | 40000 | wewr |     17 |
++-------+---------+-----------+------+------------+-------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> UPDATE emp1 SET sal = sal * 1.15
+    -> WHERE hiredate < DATE_SUB(CURRENT_DATE(), INTERVAL 10 YEAR);
+Query OK, 0 rows affected (0.11 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+mysql> select * from emp1;
++-------+---------+-----------+------+------------+-------+------+--------+
+| empno | ename   | job       | mgr  | hiredate   | sal   | comm | deptno |
++-------+---------+-----------+------+------------+-------+------+--------+
+|    14 | abhitha | developer | mgr  | 2022-06-23 | 41000 | wewr |     12 |
+|    15 | abhiram | sweeper   | mgr  | 2024-02-13 | 40000 | wewr |     17 |
++-------+---------+-----------+------+------------+-------+------+--------+
+2 rows in set (0.00 sec)
+
+mysql> insert into Dept values(19,"aishwarya","kottayam");
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into Dept values(20,"akash","kottayam");
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into emp1 values(16,"abin","tester","mgr",'1998-02-19',40000,"wewr",19);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into emp1 values(16,"abin","tester","mgr",'1992-04-29',40500,"wewr",20);
+ERROR 1062 (23000): Duplicate entry '16' for key 'emp1.PRIMARY'
+mysql> insert into emp1 values(17,"shambu","tester","mgr",'1992-04-29',40500,"wewr",20);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * from emp1;
++-------+---------+-----------+------+------------+-------+------+--------+
+| empno | ename   | job       | mgr  | hiredate   | sal   | comm | deptno |
++-------+---------+-----------+------+------------+-------+------+--------+
+|    14 | abhitha | developer | mgr  | 2022-06-23 | 41000 | wewr |     12 |
+|    15 | abhiram | sweeper   | mgr  | 2024-02-13 | 40000 | wewr |     17 |
+|    16 | abin    | tester    | mgr  | 1998-02-19 | 40000 | wewr |     19 |
+|    17 | shambu  | tester    | mgr  | 1992-04-29 | 40500 | wewr |     20 |
++-------+---------+-----------+------+------------+-------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select * from dept;
++--------+-------------+----------------+
+| deptno | dname       | loc            |
++--------+-------------+----------------+
+|     12 | nandhakumar | changanacherry |
+|     17 | mahesh      | ernakulam      |
+|     19 | aishwarya   | kottayam       |
+|     20 | akash       | kottayam       |
++--------+-------------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> UPDATE emp1 SET sal = sal * 1.15 WHERE hiredate < DATE_SUB(CURRENT_DATE(), INTERVAL 10 YEAR);
+Query OK, 2 rows affected (0.05 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> select * from emp1;
++-------+---------+-----------+------+------------+-------+------+--------+
+| empno | ename   | job       | mgr  | hiredate   | sal   | comm | deptno |
++-------+---------+-----------+------+------------+-------+------+--------+
+|    14 | abhitha | developer | mgr  | 2022-06-23 | 41000 | wewr |     12 |
+|    15 | abhiram | sweeper   | mgr  | 2024-02-13 | 40000 | wewr |     17 |
+|    16 | abin    | tester    | mgr  | 1998-02-19 | 46000 | wewr |     19 |
+|    17 | shambu  | tester    | mgr  | 1992-04-29 | 46575 | wewr |     20 |
++-------+---------+-----------+------+------------+-------+------+--------+
+4 rows in set (0.00 sec)
+
+mysql> DELETE FROM emp1 WHERE hiredate <= DATE_SUB(CURRENT_DATE(), INTERVAL 30 YEAR);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * from emp1;
++-------+---------+-----------+------+------------+-------+------+--------+
+| empno | ename   | job       | mgr  | hiredate   | sal   | comm | deptno |
++-------+---------+-----------+------+------------+-------+------+--------+
+|    14 | abhitha | developer | mgr  | 2022-06-23 | 41000 | wewr |     12 |
+|    15 | abhiram | sweeper   | mgr  | 2024-02-13 | 40000 | wewr |     17 |
+|    16 | abin    | tester    | mgr  | 1998-02-19 | 46000 | wewr |     19 |
++-------+---------+-----------+------+------------+-------+------+--------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT e.mgr, COUNT(*) AS num_employees FROM emp1 e GROUP BY e.mgr ORDER BY num_employees DESC LIMIT 1;
++------+---------------+
+| mgr  | num_employees |
++------+---------------+
+| mgr  |             3 |
++------+---------------+
+1 row in set (0.10 sec)
+
+mysql> CREATE VIEW Employee_Manager AS SELECT e.ename AS employee_name, m.ename AS manager_name FROM emp1 e JOIN emp1 m ON e.mgr = m.empno;
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> select * from Employee_Manager;
+Empty set (0.04 sec)
+
+mysql> alter table emp1 add mid int;
+Query OK, 0 rows affected (0.27 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from emp1;
++-------+---------+-----------+------+------------+-------+------+--------+------+
+| empno | ename   | job       | mgr  | hiredate   | sal   | comm | deptno | mid  |
++-------+---------+-----------+------+------------+-------+------+--------+------+
+|    14 | abhitha | developer | mgr  | 2022-06-23 | 41000 | wewr |     12 | NULL |
+|    15 | abhiram | sweeper   | mgr  | 2024-02-13 | 40000 | wewr |     17 | NULL |
+|    16 | abin    | tester    | mgr  | 1998-02-19 | 46000 | wewr |     19 | NULL |
++-------+---------+-----------+------+------------+-------+------+--------+------+
+3 rows in set (0.00 sec)
+
+mysql> update emp1 set mid=102 where empno=14;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp1 set mid=103 where empno=15;
+Query OK, 1 row affected (0.05 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update emp1 set mid=104 where empno=16;
+Query OK, 1 row affected (0.16 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from emp1;
++-------+---------+-----------+------+------------+-------+------+--------+------+
+| empno | ename   | job       | mgr  | hiredate   | sal   | comm | deptno | mid  |
++-------+---------+-----------+------+------------+-------+------+--------+------+
+|    14 | abhitha | developer | mgr  | 2022-06-23 | 41000 | wewr |     12 |  102 |
+|    15 | abhiram | sweeper   | mgr  | 2024-02-13 | 40000 | wewr |     17 |  103 |
+|    16 | abin    | tester    | mgr  | 1998-02-19 | 46000 | wewr |     19 |  104 |
++-------+---------+-----------+------+------------+-------+------+--------+------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT e.mid, COUNT(*) AS num_employees FROM emp1 e GROUP BY e.mid ORDER BY num_employees DESC LIMIT 1;
++------+---------------+
+| mid  | num_employees |
++------+---------------+
+|  102 |             1 |
++------+---------------+
+1 row in set (0.00 sec)
+
+mysql> CREATE VIEW Employee_Manager1 AS SELECT e.ename AS employee_name, m.ename AS manager_name FROM emp1 e JOIN emp1 m ON e.mid = m.empno;
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> select * from Employee_Manager1;
+Empty set (0.00 sec)
+
+mysql>

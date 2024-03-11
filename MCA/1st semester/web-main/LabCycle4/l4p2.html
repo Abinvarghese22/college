@@ -1,0 +1,31 @@
+<html>
+<head>
+<style>
+h1{
+color:green;
+text-decoration:underline;
+}
+
+</style>
+</head>
+<body>
+<center>
+<h1>Addition of two numbers</h1>
+<label>Enter the value of first number:</label>
+<input type="text" id="tex1">
+<label>Enter the value of second number:</label>
+<input type="text" id="tex2">
+<button onclick="myfunction()">Sum</button>
+<p id="x"></p>
+<script>
+function myfunction(){
+var n1=document.getElementById("tex1").value;
+var n2=document.getElementById("tex2").value;
+var x=+n1 + +n2;
+document.getElementById("x").innerHTML=x;
+}
+</script>
+</center>
+</body>
+
+</html>

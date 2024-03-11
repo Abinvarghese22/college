@@ -1,0 +1,23 @@
+<html>
+<head>
+  <title>Change Paragraph Background Color</title>
+</head>
+<body>
+  <h1>Choose the background color for your paragraph</h1>
+  <button id="setColorButton">Set Background Color</button>
+
+  <script>
+    document.getElementById("setColorButton").addEventListener("click", function() {
+      const userColor = prompt("Enter a background color (e.g., 'red', '#00FF00', 'blue', etc.):");
+
+      if (userColor) {
+        const paragraph = document.createElement("p");
+        paragraph.textContent = "JavaScript (JS) is a cross-platform, object-oriented programming language used by developers to make web pages interactive. It allows developers to create dynamically updating content, use animations, pop-up menus, clickable buttons, control multimedia, etc.";
+        paragraph.style.backgroundColor = userColor;
+
+        document.body.appendChild(paragraph);
+      }
+    });
+  </script>
+</body>
+</html>

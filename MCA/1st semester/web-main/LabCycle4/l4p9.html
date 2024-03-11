@@ -1,0 +1,74 @@
+<!--9. Generate the calendar using JavaScript code by getting the year from the user. Keerthana K B 3/11/2023 !-->
+
+<html>
+<head>
+<style>
+ table {
+      border-collapse: collapse;
+      width: 70%;
+      margin: 0 auto;
+    }
+    th, td {
+      border: 1px solid #000;
+      padding: 5px;
+      text-align: center;
+   }
+</style>
+</head>
+<body>
+<h1>Yearly Calendar</h1>
+  <label for="yearInput">Enter a year:</label>
+  <input type="text" id="yearInput">
+  <button id="generateCalendar">Generate Calendar</button>
+  <div id="calendar"></div>
+
+  <script>
+    const generateCalendar = () => {
+      const year = parseInt(document.getElementById("yearInput").value);
+      const calendar = document.getElementById("calendar");
+      calendar.innerHTML = "";
+
+      for (let month = 1; month <= 12; month++) {
+        const monthName = new Date(year, month - 1, 1).toLocaleString("default", { month: "long" });
+        const daysInMonth = new Date(year, month, 0).getDate();
+
+        const table = document.createElement("table");
+        const caption = table.createCaption();
+        caption.innerHTML = monthName + " " + year;
+
+        const headerRow = table.insertRow();
+        const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+        for (const day of daysOfWeek) {
+          const th = document.createElement("th");
+          th.textContent = day;
+          headerRow.appendChild(th);
+        }
+
+        let date = new Date(year, month - 1, 1);
+        let row = table.insertRow();
+        let dayOfWeek = date.getDay();
+
+        for (let i = 0; i < dayOfWeek; i++) {
+          row.insertCell();
+        }
+
+        for (let day = 1; day <= daysInMonth; day++) {
+          if (dayOfWeek === 7) {
+            row = table.insertRow();
+            dayOfWeek = 0;
+          }
+
+          const cell = row.insertCell();
+          cell.textContent = day;
+          dayOfWeek++;
+        }
+
+        calendar.appendChild(table);
+      }
+    };
+    document.getElementById("generateCalendar").addEventListener("click", generateCalendar);
+  </script>
+
+</body>
+</html>

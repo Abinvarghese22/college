@@ -1,0 +1,53 @@
+<!--11.Create a HTML page to display a new image and text when the mouse comes over the existing content in the page using JavaScript Event Handling. Keerthana K B 3/11/2023 !-->
+
+<html>
+<head>
+  <title>Mouse Hover Example</title>
+  <style>
+    #container {
+      width: 300px;
+      height: 300px;
+      background-color: #eee;
+      text-align: center;
+      padding: 20px;
+      transition: background-color 0.3s;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>Hover over me!</h1>
+  </div>
+
+  <script>
+    // Function to change content on mouse hover
+    function changeContent() {
+      const container = document.getElementById('container');
+      container.innerHTML = '';
+      container.style.backgroundColor = 'lightblue';
+
+      const newImage = document.createElement('img');
+      newImage.src = 'new-image.jpg';
+      newImage.alt = 'New Image';
+      container.appendChild(newImage);
+
+      const newText = document.createElement('p');
+      newText.textContent = 'Art is not what you see,but what you make others see';
+      container.appendChild(newText);
+    }
+
+    // Function to reset content on mouse out
+    function resetContent() {
+      const container = document.getElementById('container');
+      container.innerHTML = '<h1>Hover over me!</h1>';
+      container.style.backgroundColor = '#eee';
+    }
+
+    // Add event listeners
+    const container = document.getElementById('container');
+    container.addEventListener('mouseenter', changeContent);
+    container.addEventListener('mouseleave', resetContent);
+  </script>
+</body>
+</html>

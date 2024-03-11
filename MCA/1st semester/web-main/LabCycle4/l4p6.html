@@ -1,0 +1,26 @@
+<html>
+<head>
+  <title>Change Background Color</title>
+</head>
+<body>
+  <h1>Click the button to change the background color!</h1>
+  <button id="colorButton">Change Color</button>
+
+  <script>
+    // JavaScript code to change the background color
+    document.getElementById("colorButton").addEventListener("click", function() {
+      // Generate a random color using the getRandomColor function
+      document.body.style.backgroundColor = getRandomColor();
+    });
+
+    function getRandomColor() {
+      const letters = "0123456789ABCDEF";
+      let color = "#";
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
+    }
+  </script>
+</body>
+</html>

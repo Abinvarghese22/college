@@ -1,0 +1,491 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 1em;
+
+        }
+
+        h3 {
+            font-size: 20px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 24px;
+            font-family: Roboto, sans-serif;
+        }
+
+        pre {
+            overflow-x: auto;
+        }
+
+        dt {
+            color: red;
+            font-weight: 400;
+            font-family: roboto, sans-serif;
+        }
+
+        dd {
+            margin-top: 1em;
+            color: rgb(104, 101, 101);
+            font-weight: 400;
+            font-family: roboto, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <br><br><br>
+    <h3>Abstraction in OOPS</h3>
+    <p>
+        Abstraction is the process of hiding the internal details of an application from the outer world. Abstraction is
+        used to describe things in simple terms. It’s used to create a boundary between the application and the client
+        programs.
+        <br><br>
+        Abstraction defines a model to create an application component.
+        Objects are the building blocks of Object-Oriented Programming. An object contains some properties and methods.
+        We can hide them from the outer world through access modifiers. We can provide access only for required
+        functions and properties to the other programs. This is the general procedure to implement abstraction in OOPS.
+        <br><br>
+        There are two types of abstraction.
+        <br><br>
+        1. Data Abstraction
+        <br>
+        2. Process Abstraction
+    </p>
+    <h3>Class in JAVA</h3>
+    <pre><code>
+        class class_name{
+            public static void main(String []args){
+                class_name object_name = new class_name();
+            }
+        }
+    </code></pre>
+    <h3>Seperate Main Class in JAVA</h3>
+    <pre><code>
+        class ABC{
+
+        }
+
+        class Main{
+            public static void main(String []args){
+                ABC object_name = new ABC();
+            }
+        }
+    </code></pre>
+    <h3>Nested Class in JAVA</h3>
+    <pre><code>
+        class ABC{
+            class XYZ{
+
+            }
+        }
+
+        class Main{
+            public static void main(String []args){
+                ABC O1 = new ABC();
+                ABC.XYZ  O2  = O1.new XYZ();
+            }
+        }
+    </code></pre>
+    <h3>Nested Class in JAVA (Static)</h3>
+    <pre><code>
+        class ABC{
+            static class XYZ{
+
+            }
+        }
+
+        class Main{
+            public static void main(String []args){
+                ABC O1 = new ABC();
+                ABC.XYZ  O2  = new XYZ();
+            }
+        }
+    </code></pre>
+    <h3>Type of Classes</h3>
+    <p>
+    <dl>
+        <dt>Static Class</dt>
+        <dd>
+            In Java, static is a keyword that manage objects in the memory. The static object belongs to the class
+            instead of the instance of the class.<br><br>
+            We can make a class static if and only if it is a nested class<br>
+            Nested static class does not require reference to the outer class.<br>
+            The class has only static members.<br>
+            It cannot access the member (non-static) of the outer class<br>
+            We cannot create an object of the static class.<br>
+            <br>
+            What good are static classes? A good use of a static class is in defining one-off, utility and/or library
+            classes where instantiation would not make sense. A great example is the Math class that contains some
+            mathematical constants such as PI and E and simply provides mathematical calculations. Requiring
+            instantiation in such a case would be unnecessary and confusing. See the Math class and source code. Notice
+            that it is final and all of its members are static. If Java allowed top-level classes to be declared static
+            then the Math class would indeed be static.<br><br>
+            ex: <b>double value_of_pi = Math.PI;  </b>
+            <br><br>
+            <b style="color: blue;">idea</b><br><br>
+            Java has no way of making a top-level class static but you can simulate a static class like this:
+            <ul>
+                <li>Declare your class final - Prevents extension of the class since extending a static class makes no sense </li>
+                <li>Make the constructor private - Prevents instantiation by client code as it makes no sense to instantiate a static class </li>
+                <li>Make all the members and functions of the class static - Since the class cannot be instantiated no instance methods can be called or instance fields accessed</li>
+                <li>Note that the compiler will not prevent you from declaring an instance (non-static) member. The issue will only show up if you attempt to call the instance member</li>
+            </ul>
+
+        </dd>
+        <dt>Final Class</dt>
+        <dd>
+            <ul>
+                <li>The word final means that cannot be changed.</li>
+                <li>The final class in Java can be declared using the final keyword.</li>
+                <li>Once we declare a class as final, the values remain the same throughout the program.</li>
+                <li>The purpose of the final class is to make the class immutable like the String class.</li>
+                <li>It is only a way to make the class immutable.</li>
+                <li>Remember that the final class cannot be extended.</li>
+                <li>It also prevents the class from being sub-classed.</li>
+            </ul>
+        </dd>
+        <dt>Abstract Class</dt>
+        <dd>
+            <ul>
+                <li>An abstract class is a that is declared with the keyword abstract.</li>
+                <li>The class may or may not contain abstract methods.</li>
+                <li>We cannot create an instance of an abstract class but it can be a subclass.</li>
+                <li>These classes are incomplete, so to complete the abstract class we should extend the abstract classes to a concrete class.</li>
+                <li>When we declare a subclass as abstract then it is necessary to provide the implementation of abstract methods.Therefore, the subclass must also be declared abstract.</li>
+                <li>We can achieve data hiding by using the abstract class.</li>
+            </ul>
+        </dd>
+        <dt>Concrete Class</dt>
+        <dd>
+            <ul>
+                <li>These are the regular Java classes.</li>
+            </ul>
+        </dd>
+        <dt>Singleton Class</dt>
+        <dd>
+            <ul>
+                <li>A class that has only an object at a time is known as a singleton class.</li>
+                <li>if we are trying to create an instance a second time, that newly created instance points to the first instance.</li>
+                <li> It is usually used to control access while dealing with the database connection and socket programming.</li>
+            </ul>
+            <pre><code>
+                class Singleton {
+                    private String objectState;
+                    private static Singleton instance = null;
+                
+                    private Singleton() throws Exception {
+                        this.objectState = "Javatpoint";
+                    }
+                
+                    public static Singleton getInstance() {
+                        if (instance == null) {
+                            try {
+                                instance = new Singleton();
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        return instance;
+                    }
+                
+                    public String getObjectState() {
+                        return objectState;
+                    }
+                
+                    public void setObjectState(String objectState) {
+                        this.objectState = objectState;
+                    }
+                
+                    public static void main(String []arg){
+                        Singleton obj1 = getInstance();
+                        Singleton obj2 = getInstance();
+                        obj1.setObjectState("ONE");
+                        System.out.println(obj1.getObjectState());
+                        System.out.println(obj2.getObjectState());
+                    }
+                }
+                
+                
+            </code></pre>
+        </dd>
+        <dt>POJO Class</dt>
+        <dd>
+            <ul>
+                <li>POJO stands for Plain Old Java Object.</li>
+                <li>All instance variables must be private.</li>
+                <li>The getter/ setter methods must be public..</li>
+                <li></li>
+            </ul>
+        </dd>
+        <dt>Inner Class</dt>
+        <dd>
+            Java allows us to define a class within a class and such classes are known as nested classes. It is used to group the classes logically and to achieve encapsulation. The outer class members (including private) can be accessed by the inner class.
+            <pre><code>
+                class OuterClass  {    
+                    //code    
+                    class NestedClass  {    
+                        //code    
+                    }    
+                } 
+            </code></pre>
+            <ul>
+                <li>Static Nested class</li>
+                <li>Non-static Nested Class</li>
+            </ul>
+            <br>
+            Types 
+            <ul>
+                <li>Local Classes or Method Local Inner Class</li>
+                <pre><code>
+                    class OuterClass  {    
+                        //code    
+                        class NestedClass  {    
+                            //code    
+                        }    
+                    } 
+                </code></pre>
+                <li>Anonymous Classes or Anonymous Inner Class (By using an interface, By declaring the class concrete and abstract)</li>
+                <pre><code>
+                    interface Score {   
+                        //code
+                    }  
+
+                    class OuterClass  {    
+                        //code    
+                        Score s = new Score()  {    
+                            //code    
+                        }    
+                    } 
+                </code></pre>
+            </ul>
+        </dd>
+        <dt>Wrapper Class</dt>
+        <dd>
+            <ul>
+                <li>In Java, the term wrapper class represents a collection of Java classes that objectify the primitive type of Java</li>
+                <li>It means that for each primitive type there is a corresponding wrapper class.</li>
+                <li>The wrapper classes are used to perform the conversion from a primitive type to an object and vice-versa.</li>
+            </ul>
+        </dd>
+    </dl>
+    </p>
+    <h3>Array Define Methods</h3>
+    <pre><code>
+        int[] data      = new int[3];
+
+        int   []data1   = new int[3];
+
+        int   data2[]   = new int[3];
+    </code></pre>
+    <h3>String Compare & Equals</h3>
+    <pre><code>
+        public class string_compare {
+            public static void main(String[] args){
+                String a = "a";
+                String b = "b";
+                System.out.println(a.compareTo(b));
+                System.out.println(b.compareTo(a));
+                System.out.println(a.compareTo(a));
+                String A = "A";
+                System.out.println(a.compareTo(A));
+
+                System.out.println(a.equals(A));
+                System.out.println(a.equals(a));
+
+                System.out.println(a==b);
+            }
+        }
+
+        // Output 
+        // -1
+        // 1
+        // 0
+        // 32
+    </code></pre>
+    <h3>Array Define Methods</h3>
+    <pre><code>
+        int[] data      = new int[3];
+
+        int   []data1   = new int[3];
+
+        int   data2[]   = new int[3];
+    </code></pre>
+    <h3>Array of Objects</h3>
+    <pre><code>
+        employee emp[] = new employee[3];
+        for(i=0;i&lt;3;i++){
+            emp[i] = new employee();
+        }
+    </code></pre>
+    <h3>Set of Objects</h3>
+    <pre><code>
+        import java.util.Set;
+        import java.util.HashSet;
+        import java.util.Arrays;
+        
+        public class set {
+            public static void main(String []arg){
+                String sentannce = "one two three one";
+                String[] arrOfStr = sentannce.split(" ");
+                Set&lt;String&gt; set = new HashSet&lt;String&gt;(Arrays.asList(arrOfStr));
+                
+                for(String i:set){
+                    System.out.println(i);
+                }
+                
+            }
+        }
+    </code></pre>
+    <h3>Java Exception</h3>
+    <pre><code>
+
+        class Main {
+            public static void main(String args[]) {
+                try {
+                    int a = 1 / 0;
+                } catch (ArithmeticException ex) {
+                    System.out.print(ex.getMessage());
+                }
+            }
+        
+        }
+           
+    </code></pre>
+    <h3>Java Custom Exception</h3>
+    <pre><code>
+
+        class Main {
+            public static void main(String args[]) {
+                int temp = -1;
+        
+                try {
+                    if (temp &gt; 0) {
+                        System.out.println(" - positive number");
+                    } else {
+                        throw new MyException(Integer.toString(temp));
+                    }
+                } catch (MyException ex) {
+                    System.out.print(ex.getMessage());
+                    System.out.println(" - Not a positive number");
+                }
+            }
+        
+        }
+        
+        class MyException extends Exception {
+            public MyException(String value) {
+                super(value);
+            }
+        }   
+
+    </code></pre>
+    <h3>Multithreading - By extending Thread class</h3>
+    <pre><code>
+        class Main {
+            public static void main(String[] arg) {
+                A a = new A();
+                B b = new B();
+        
+                a.start();
+                b.start();
+            }
+        }
+        
+        class A extends Thread {
+            public void run() {
+                for (int i = 0; i &lt; 5; i++) {
+                    System.out.println(i);
+                }
+            }
+        }
+        
+        class B extends Thread {
+            public void run() {
+                for (int i = 100; i &lt; 105; i++) {
+                    System.out.println(i);
+                }
+            }
+        }
+        
+        
+    </code></pre>
+    <h3>Multithreading - By implementing Runnable interface</h3>
+    <pre><code>
+        class Main {
+            public static void main(String[] arg) {
+                A a = new A();
+                B b = new B();
+                Thread a1 = new Thread(a);
+                Thread b1 = new Thread(b);
+                a1.start();
+                b1.start();
+            }
+        }
+        
+        class A implements Runnable {
+            public void run() {
+                for (int i = 0; i &lt; 5; i++) {
+                    System.out.println(i);
+                }
+            }
+        }
+        
+        class B implements Runnable {
+            public void run() {
+                for (int i = 100; i &lt; 105; i++) {
+                    System.out.println(i);
+                }
+            }
+        }
+        
+        
+    </code></pre>
+    <h3>FILE</h3>
+    <pre><code>
+        import java.io.FileWriter;
+        import java.io.IOException;
+        import java.io.File;
+        import java.io.FileNotFoundException;
+        import java.util.Scanner;
+        
+        class Main {
+            static String data="";
+            public static void main(String[] arg) {
+                // Read
+                try {
+                    File dataFile = new File("DATA.txt");
+                    Scanner dataRead = new Scanner(dataFile);
+                    while (dataRead.hasNextLine()) {
+                        data += dataRead.nextLine();
+                        data +="\n";
+                    }
+                    dataRead.close();
+                } catch (FileNotFoundException ex) {
+                    System.out.println("An error occured !");
+                    //ex.printStackTrace();
+                }
+                // Write
+                try {
+                    FileWriter dataWriter = new FileWriter("DATA2.txt");
+                    dataWriter.write(data);
+                    dataWriter.close();
+                } catch (IOException ex) {
+                    System.out.println("An error occured !");
+                    ex.printStackTrace();
+                }
+        
+            }
+        }
+    </code></pre>
+</body>
+
+</html>
