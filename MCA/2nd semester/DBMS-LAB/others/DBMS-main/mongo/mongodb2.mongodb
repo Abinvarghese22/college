@@ -1,0 +1,744 @@
+Please enter a MongoDB connection string (Default: mongodb://localhost/): mongodb://localhost:27017
+mongodb://localhost:27017
+Current Mongosh Log ID: 660a778aee91ec231a8bf201
+Connecting to:          mongodb://localhost:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.0
+Using MongoDB:          7.0.6
+Using Mongosh:          2.2.0
+mongosh 2.2.2 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-04-01T14:06:36.849+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use stud
+switched to db stud
+stud> db.createCollection('details')
+{ ok: 1 }
+stud> db.details.insert({roll:1,sname:'ram',dpmt:'cse',sem:2,cgpa:7})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('660a7882ee91ec231a8bf202') }
+}
+stud> db.details.insert({roll:2,sname:'sam',dpmt:'it',sem:3,cgpa:5})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('660a7889ee91ec231a8bf203') }
+}
+stud> db.details.insert({roll:3,sname:'dane',dpmt:'ai',sem:6,cgpa:6})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('660a788fee91ec231a8bf204') }
+}
+stud> db.details.insert({roll:4,sname:'mary',dpmt:'ece',sem:5,cgpa:6})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('660a7896ee91ec231a8bf205') }
+}
+stud> db.details.insert({roll:5,sname:'rani',dpmt:'eee',sem:5,cgpa:8})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('660a78bcee91ec231a8bf206') }
+}
+stud> db.details.insert({roll:6,sname:'rony',dpmt:'cse',sem:4,cgpa:8})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('660a78c4ee91ec231a8bf207') }
+}
+stud> db.details.find()
+[
+  {cknowledged: true,
+    _id: ObjectId('660a751f48503962b18bf202'),231a8bf20b') }
+    roll: 1,
+    sname: 'ram',
+    dpmt: 'cse',
+    sem: 2,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a752948503962b18bf203'),
+    roll: 2,
+    sname: 'sam',
+    dpmt: 'it',
+    sem: 3,
+    cgpa: 5
+  },
+  {
+    _id: ObjectId('660a753848503962b18bf204'),
+    roll: 3,
+    sname: 'dane',
+    dpmt: 'ai',
+    sem: 6,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a753f48503962b18bf205'),
+    roll: 4,
+    sname: 'mary',
+    dpmt: 'ece',
+    sem: 5,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a755348503962b18bf206'),
+    roll: 5,
+    sname: 'rani',
+    dpmt: 'eee',
+    sem: 5,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a755648503962b18bf207'),
+    roll: 6,
+    sname: 'rony',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a756448503962b18bf208'),
+    roll: 7,
+    sname: 'ajay',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a757448503962b18bf209'),
+    roll: 8,
+    sname: 'jony',
+    dpmt: 'cse',
+    sem: 3,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a758148503962b18bf20a'),
+    roll: 9,
+    sname: 'sony',
+    dpmt: 'eee',
+    sem: 3,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a758a48503962b18bf20b'),
+    roll: 10,
+    sname: 'sradha',
+    dpmt: 'eee',
+    sem: 7,
+    cgpa: 9
+  },
+  {
+    _id: ObjectId('660a7882ee91ec231a8bf202'),
+    roll: 1,
+    sname: 'ram',
+    dpmt: 'cse',
+    sem: 2,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a7889ee91ec231a8bf203'),
+    roll: 2,
+    sname: 'sam',
+    dpmt: 'it',
+    sem: 3,
+    cgpa: 5
+  },
+  {
+    _id: ObjectId('660a788fee91ec231a8bf204'),
+    roll: 3,
+    sname: 'dane',
+    dpmt: 'ai',
+    sem: 6,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a7896ee91ec231a8bf205'),
+    roll: 4,
+    sname: 'mary',
+    dpmt: 'ece',
+    sem: 5,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a78bcee91ec231a8bf206'),
+    roll: 5,
+    sname: 'rani',
+    dpmt: 'eee',
+    sem: 5,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a78c4ee91ec231a8bf207'),
+    roll: 6,
+    sname: 'rony',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a78ccee91ec231a8bf208'),
+    roll: 7,
+    sname: 'ajay',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a78d3ee91ec231a8bf209'),
+    roll: 8,
+    sname: 'jony',
+    dpmt: 'cse',
+    sem: 3,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a78e0ee91ec231a8bf20a'),
+    roll: 9,
+    sname: 'sony',
+    dpmt: 'eee',
+    sem: 3,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a78e7ee91ec231a8bf20b'),
+    roll: 10,
+    sname: 'sradha',
+    dpmt: 'eee',
+    sem: 7,
+    cgpa: 9
+  }
+]
+Type "it" for more
+stud> db.details.find()
+[
+  {
+    _id: ObjectId('660a751f48503962b18bf202'),
+    roll: 1,
+    sname: 'ram',
+    dpmt: 'cse',
+    sem: 2,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a752948503962b18bf203'),
+    roll: 2,
+    sname: 'sam',
+    dpmt: 'it',
+    sem: 3,
+    cgpa: 5
+  },
+  {
+    _id: ObjectId('660a753848503962b18bf204'),
+    roll: 3,
+    sname: 'dane',
+    dpmt: 'ai',
+    sem: 6,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a753f48503962b18bf205'),
+    roll: 4,
+    sname: 'mary',
+    dpmt: 'ece',
+    sem: 5,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a755348503962b18bf206'),
+    roll: 5,
+    sname: 'rani',
+    dpmt: 'eee',
+    sem: 5,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a755648503962b18bf207'),
+    roll: 6,
+    sname: 'rony',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a756448503962b18bf208'),
+    roll: 7,
+    sname: 'ajay',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a757448503962b18bf209'),
+    roll: 8,
+    sname: 'jony',
+    dpmt: 'cse',
+    sem: 3,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a758148503962b18bf20a'),
+    roll: 9,
+    sname: 'sony',
+    dpmt: 'eee',
+    sem: 3,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a758a48503962b18bf20b'),
+    roll: 10,
+    sname: 'sradha',
+    dpmt: 'eee',
+    sem: 7,
+    cgpa: 9
+  },
+  {
+    _id: ObjectId('660a7882ee91ec231a8bf202'),
+    roll: 1,
+    sname: 'ram',
+    dpmt: 'cse',
+    sem: 2,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a7889ee91ec231a8bf203'),
+    roll: 2,
+    sname: 'sam',
+    dpmt: 'it',
+    sem: 3,
+    cgpa: 5
+  },
+  {
+    _id: ObjectId('660a788fee91ec231a8bf204'),
+    roll: 3,
+    sname: 'dane',
+    dpmt: 'ai',
+    sem: 6,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a7896ee91ec231a8bf205'),
+    roll: 4,
+    sname: 'mary',
+    dpmt: 'ece',
+    sem: 5,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a78bcee91ec231a8bf206'),
+    roll: 5,
+    sname: 'rani',
+    dpmt: 'eee',
+    sem: 5,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a78c4ee91ec231a8bf207'),
+    roll: 6,
+    sname: 'rony',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a78ccee91ec231a8bf208'),
+    roll: 7,
+    sname: 'ajay',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a78d3ee91ec231a8bf209'),
+    roll: 8,
+    sname: 'jony',
+    dpmt: 'cse',
+    sem: 3,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a78e0ee91ec231a8bf20a'),
+    roll: 9,
+    sname: 'sony',
+    dpmt: 'eee',
+    sem: 3,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a78e7ee91ec231a8bf20b'),
+    roll: 10,
+    sname: 'sradha',
+    dpmt: 'eee',
+    sem: 7,
+    cgpa: 9
+  }
+]
+Type "it" for more
+stud> db.details.find({dpmt:'cse'})
+[
+  {
+    _id: ObjectId('660a751f48503962b18bf202'),
+    roll: 1,
+    sname: 'ram',
+    dpmt: 'cse',
+    sem: 2,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a755648503962b18bf207'),
+    roll: 6,
+    sname: 'rony',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a756448503962b18bf208'),
+    roll: 7,
+    sname: 'ajay',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a757448503962b18bf209'),
+    roll: 8,
+    sname: 'jony',
+    dpmt: 'cse',
+    sem: 3,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a7882ee91ec231a8bf202'),
+    roll: 1,
+    sname: 'ram',
+    dpmt: 'cse',
+    sem: 2,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a78c4ee91ec231a8bf207'),
+    roll: 6,
+    sname: 'rony',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a78ccee91ec231a8bf208'),
+    roll: 7,
+    sname: 'ajay',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a78d3ee91ec231a8bf209'),
+    roll: 8,
+    sname: 'jony',
+    dpmt: 'cse',
+    sem: 3,
+    cgpa: 6
+  }
+]
+stud> db.details.find().skip(4).limit(3)
+[ncaught:
+  {taxError: Missing semicolon. (1:33)
+    _id: ObjectId('660a755348503962b18bf206'),
+    roll: 5,ails.find().sort({sname:1}) db.details.find().limit(5)
+    sname: 'rani',                     ^
+    dpmt: 'eee',
+    sem: 5,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a755648503962b18bf207'),
+    roll: 6,
+    sname: 'rony',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a756448503962b18bf208'),
+    roll: 7,
+    sname: 'ajay',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 7
+  }
+]
+stud> db.details.find().sort({cgpa:-1}).skip(4).limit(3)
+[
+  {
+    _id: ObjectId('660a78bcee91ec231a8bf206'),
+    roll: 5,
+    sname: 'rani',
+    dpmt: 'eee',
+    sem: 5,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a755648503962b18bf207'),
+    roll: 6,
+    sname: 'rony',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a751f48503962b18bf202'),
+    roll: 1,
+    sname: 'ram',
+    dpmt: 'cse',
+    sem: 2,
+    cgpa: 7
+  }
+]
+stud> db.details.find().sort({cgpa:-1})
+[
+  {
+    _id: ObjectId('660a758a48503962b18bf20b'),
+    roll: 10,
+    sname: 'sradha',
+    dpmt: 'eee',
+    sem: 7,
+    cgpa: 9
+  },
+  {
+    _id: ObjectId('660a78e7ee91ec231a8bf20b'),
+    roll: 10,
+    sname: 'sradha',
+    dpmt: 'eee',
+    sem: 7,
+    cgpa: 9
+  },
+  {
+    _id: ObjectId('660a755348503962b18bf206'),
+    roll: 5,
+    sname: 'rani',
+    dpmt: 'eee',
+    sem: 5,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a755648503962b18bf207'),
+    roll: 6,
+    sname: 'rony',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a78bcee91ec231a8bf206'),
+    roll: 5,
+    sname: 'rani',
+    dpmt: 'eee',
+    sem: 5,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a78c4ee91ec231a8bf207'),
+    roll: 6,
+    sname: 'rony',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a751f48503962b18bf202'),
+    roll: 1,
+    sname: 'ram',
+    dpmt: 'cse',
+    sem: 2,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a756448503962b18bf208'),
+    roll: 7,
+    sname: 'ajay',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a7882ee91ec231a8bf202'),
+    roll: 1,
+    sname: 'ram',
+    dpmt: 'cse',
+    sem: 2,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a78ccee91ec231a8bf208'),
+    roll: 7,
+    sname: 'ajay',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a753848503962b18bf204'),
+    roll: 3,
+    sname: 'dane',
+    dpmt: 'ai',
+    sem: 6,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a753f48503962b18bf205'),
+    roll: 4,
+    sname: 'mary',
+    dpmt: 'ece',
+    sem: 5,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a757448503962b18bf209'),
+    roll: 8,
+    sname: 'jony',
+    dpmt: 'cse',
+    sem: 3,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a758148503962b18bf20a'),
+    roll: 9,
+    sname: 'sony',
+    dpmt: 'eee',
+    sem: 3,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a788fee91ec231a8bf204'),
+    roll: 3,
+    sname: 'dane',
+    dpmt: 'ai',
+    sem: 6,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a7896ee91ec231a8bf205'),
+    roll: 4,
+    sname: 'mary',
+    dpmt: 'ece',
+    sem: 5,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a78d3ee91ec231a8bf209'),
+    roll: 8,
+    sname: 'jony',
+    dpmt: 'cse',
+    sem: 3,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a78e0ee91ec231a8bf20a'),
+    roll: 9,
+    sname: 'sony',
+    dpmt: 'eee',
+    sem: 3,
+    cgpa: 6
+  },
+  {
+    _id: ObjectId('660a752948503962b18bf203'),
+    roll: 2,
+    sname: 'sam',
+    dpmt: 'it',
+    sem: 3,
+    cgpa: 5
+  },
+  {
+    _id: ObjectId('660a7889ee91ec231a8bf203'),
+    roll: 2,
+    sname: 'sam',
+    dpmt: 'it',
+    sem: 3,
+    cgpa: 5
+  }
+]
+Type "it" for more
+stud> db.details.find({},{_id:0})
+[
+  { roll: 1, sname: 'ram', dpmt: 'cse', sem: 2, cgpa: 7 },
+  { roll: 2, sname: 'sam', dpmt: 'it', sem: 3, cgpa: 5 },
+  { roll: 3, sname: 'dane', dpmt: 'ai', sem: 6, cgpa: 6 },
+  { roll: 4, sname: 'mary', dpmt: 'ece', sem: 5, cgpa: 6 },
+  { roll: 5, sname: 'rani', dpmt: 'eee', sem: 5, cgpa: 8 },
+  { roll: 6, sname: 'rony', dpmt: 'cse', sem: 4, cgpa: 8 },
+  { roll: 7, sname: 'ajay', dpmt: 'cse', sem: 4, cgpa: 7 },
+  { roll: 8, sname: 'jony', dpmt: 'cse', sem: 3, cgpa: 6 },
+  { roll: 9, sname: 'sony', dpmt: 'eee', sem: 3, cgpa: 6 },
+  { roll: 10, sname: 'sradha', dpmt: 'eee', sem: 7, cgpa: 9 },
+  { roll: 1, sname: 'ram', dpmt: 'cse', sem: 2, cgpa: 7 },
+  { roll: 2, sname: 'sam', dpmt: 'it', sem: 3, cgpa: 5 },
+  { roll: 3, sname: 'dane', dpmt: 'ai', sem: 6, cgpa: 6 },
+  { roll: 4, sname: 'mary', dpmt: 'ece', sem: 5, cgpa: 6 },
+  { roll: 5, sname: 'rani', dpmt: 'eee', sem: 5, cgpa: 8 },
+  { roll: 6, sname: 'rony', dpmt: 'cse', sem: 4, cgpa: 8 },
+  { roll: 7, sname: 'ajay', dpmt: 'cse', sem: 4, cgpa: 7 },
+  { roll: 8, sname: 'jony', dpmt: 'cse', sem: 3, cgpa: 6 },
+  { roll: 9, sname: 'sony', dpmt: 'eee', sem: 3, cgpa: 6 },
+  { roll: 10, sname: 'sradha', dpmt: 'eee', sem: 7, cgpa: 9 }
+]
+Type "it" for more
+stud> db.details.find({$and:[{dpmt:'cse'},{sem:4}]})
+[
+  {
+    _id: ObjectId('660a755648503962b18bf207'),
+    roll: 6,
+    sname: 'rony',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a756448503962b18bf208'),
+    roll: 7,
+    sname: 'ajay',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 7
+  },
+  {
+    _id: ObjectId('660a78c4ee91ec231a8bf207'),
+    roll: 6,
+    sname: 'rony',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 8
+  },
+  {
+    _id: ObjectId('660a78ccee91ec231a8bf208'),
+    roll: 7,
+    sname: 'ajay',
+    dpmt: 'cse',
+    sem: 4,
+    cgpa: 7
+  }
+]
+stud> db.details.find({cgpa:{$gt:4,$lt:7}})
+[
+  {
+    _id: ObjectId('660a752948503962b18bf203'),
+    roll: 2,
+    sname: 'sam',
+    dpmt: 'it',
+    sem: 3,
+    cgpa: 5
+stud> db.details.find({dpmt:'cse'})db.details.find({dpmt:'cse'})db.details.find({dpmt:'cse'})db.details.find({dpmt:'cse'})db.details.deleteMany({cgpa:{$gt:8}})
+Uncaught:ObjectId('660a753848503962b18bf204'),
+SyntaxError: Missing semicolon. (1:29)
+    sname: 'dane',
+> 1 | db.details.find({dpmt:'cse'})db.details.find({dpmt:'cse'})db.details.find({dpmt:'cse'})db.details.find({dpmt:'cse'})db.details.deleteMany({cgpa:{$gt:8}})
+    |                              ^
+  2 |
+  {
+stud> db.details.deleteMany({cgpa:{$gt:8}})
+{ acknowledged: true, deletedCount: 0 }
+stud> db.details.deleteMany({cgpa:{$gt:8}})
+{ acknowledged: true, deletedCount: 0 }
+stud>
