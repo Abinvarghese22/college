@@ -1,0 +1,526 @@
+test> use college;
+switched to db college
+college> db.createCollection("stud")
+{ ok: 1 }
+college> db.s2mca.insert({roll:1,name:'ram',age:20,div:'A',sub:['phy','che']})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('6613bbdfc3574f932e8bf202') }
+}
+college> db.s2mca.insert({roll:2,name:'sam',age:21,div:'b',sub:['phy','mat']})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('6613bbdfc3574f932e8bf203') }
+}
+college> db.s2mca.insert({roll:3,name:'june',age:21,div:'c',sub:['phy','eng']})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('6613bbdfc3574f932e8bf204') }
+}
+college> db.s2mca.find()
+[
+  {
+    _id: ObjectId('66134bda6d4c48245a8bf202'),
+    roll: 1,
+    name: 'ram',
+    age: 20,
+    div: 'A',
+    sub: [ 'phy', 'che' ]
+  },
+  {
+    _id: ObjectId('66134bdb6d4c48245a8bf203'),
+    roll: 2,
+    name: 'sam',
+    age: 21,
+    div: 'b',
+    sub: [ 'phy', 'mat' ]
+  },
+  {
+    _id: ObjectId('66134bdb6d4c48245a8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: [ 'phy', 'eng' ]
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf202'),
+    roll: 1,
+    name: 'ram',
+    age: 20,
+    div: 'A',
+    sub: [ 'phy', 'che' ]
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf203'),
+    roll: 2,
+    name: 'sam',
+    age: 21,
+    div: 'b',
+    sub: [ 'phy', 'mat' ]
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: [ 'phy', 'eng' ]
+  }
+]
+college> db.s2mca.aggregate([{$group:{_id:'$div',total_st:{$sum:1},max_age:{$max:'$age'}}}])total stud in A': 2 } ]
+[
+  { _id: 'A', total_st: 2, max_age: 20 },
+  { _id: 'b', total_st: 2, max_age: 21 },
+  { _id: 'c', total_st: 2, max_age: 21 }
+]
+college> [
+... { _id: 'A', total_st: 2, max_age: 21 },
+... { _id: 'b', total_st: 1, max_age: 21 },
+college> db.s2mca.aggregate([{$match:{age:{$gt:20}}}])
+[ncaught:
+  {taxError: Unexpected token, expected "," (5:0)
+    _id: ObjectId('66134bdb6d4c48245a8bf203'),
+    roll: 2, 'b', total_st: 1, max_age: 21 },
+    name: 'sam',, total_st: 1, max_age: 21 }
+    age: 21,
+    div: 'b',
+    sub: [ 'phy', 'mat' ]
+  },
+  {
+    _id: ObjectId('66134bdb6d4c48245a8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: [ 'phy', 'eng' ]
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf203'),
+    roll: 2,
+    name: 'sam',
+    age: 21,
+    div: 'b',
+    sub: [ 'phy', 'mat' ]
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: [ 'phy', 'eng' ]
+  }
+]
+college> db.s2mca.aggregate([{'$sort':{'age':1}}])
+[
+  {
+    _id: ObjectId('66134bda6d4c48245a8bf202'),
+    roll: 1,
+    name: 'ram',
+    age: 20,
+    div: 'A',
+    sub: [ 'phy', 'che' ]
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf202'),
+    roll: 1,
+    name: 'ram',
+    age: 20,
+    div: 'A',
+    sub: [ 'phy', 'che' ]
+  },
+  {
+    _id: ObjectId('66134bdb6d4c48245a8bf203'),
+    roll: 2,
+    name: 'sam',
+    age: 21,
+    div: 'b',
+    sub: [ 'phy', 'mat' ]
+  },
+  {
+    _id: ObjectId('66134bdb6d4c48245a8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: [ 'phy', 'eng' ]
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf203'),
+    roll: 2,
+    name: 'sam',
+    age: 21,
+    div: 'b',
+    sub: [ 'phy', 'mat' ]
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: [ 'phy', 'eng' ]
+  }
+]
+college> db.s2mca.aggregate([{'$sort':{'age':-1}}])
+[
+  {
+    _id: ObjectId('66134bdb6d4c48245a8bf203'),
+    roll: 2,
+    name: 'sam',
+    age: 21,
+    div: 'b',
+    sub: [ 'phy', 'mat' ]
+  },
+  {
+    _id: ObjectId('66134bdb6d4c48245a8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: [ 'phy', 'eng' ]
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf203'),
+    roll: 2,
+    name: 'sam',
+    age: 21,
+    div: 'b',
+    sub: [ 'phy', 'mat' ]
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: [ 'phy', 'eng' ]
+  },
+  {
+    _id: ObjectId('66134bda6d4c48245a8bf202'),
+    roll: 1,
+    name: 'ram',
+    age: 20,
+    div: 'A',
+    sub: [ 'phy', 'che' ]
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf202'),
+    roll: 1,
+    name: 'ram',
+    age: 20,
+    div: 'A',
+    sub: [ 'phy', 'che' ]
+  }
+]
+college> db.s2mca.aggregate([{$match:{div:"A"}},{'$sort':{'age':-1}},{$limit:1}])
+[
+  {
+    _id: ObjectId('66134bda6d4c48245a8bf202'),
+    roll: 1,
+    name: 'ram',
+    age: 20,
+    div: 'A',
+    sub: [ 'phy', 'che' ]
+  }
+]
+college> db.s2mca.aggregate([{$unwind:'$sub'}])
+[
+  {
+    _id: ObjectId('66134bda6d4c48245a8bf202'),
+    roll: 1,
+    name: 'ram',
+    age: 20,
+    div: 'A',
+    sub: 'phy'
+  },
+  {
+    _id: ObjectId('66134bda6d4c48245a8bf202'),
+    roll: 1,
+    name: 'ram',
+    age: 20,
+    div: 'A',
+    sub: 'che'
+  },
+  {
+    _id: ObjectId('66134bdb6d4c48245a8bf203'),
+    roll: 2,
+    name: 'sam',
+    age: 21,
+    div: 'b',
+    sub: 'phy'
+  },
+  {
+    _id: ObjectId('66134bdb6d4c48245a8bf203'),
+    roll: 2,
+    name: 'sam',
+    age: 21,
+    div: 'b',
+    sub: 'mat'
+  },
+  {
+    _id: ObjectId('66134bdb6d4c48245a8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: 'phy'
+  },
+  {
+    _id: ObjectId('66134bdb6d4c48245a8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: 'eng'
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf202'),
+    roll: 1,
+    name: 'ram',
+    age: 20,
+    div: 'A',
+    sub: 'phy'
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf202'),
+    roll: 1,
+    name: 'ram',
+    age: 20,
+    div: 'A',
+    sub: 'che'
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf203'),
+    roll: 2,
+    name: 'sam',
+    age: 21,
+    div: 'b',
+    sub: 'phy'
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf203'),
+    roll: 2,
+    name: 'sam',
+    age: 21,
+    div: 'b',
+    sub: 'mat'
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: 'phy'
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: 'eng'
+  }
+]
+college> db.s2mca.aggregate([{$group:{_id:'roll',averageAge:{$avg:'$age'}}}]);
+[ { _id: 'roll', averageAge: 20.666666666666668 } ]
+college> db.s2mca.aggregate([{$group:{_id:'$gender',count:{$sum:1}}}]);
+[ { _id: null, count: 6 } ]
+college> db.s2mca.aggregate([{$sort:{credit:-1}},{$limit:1}])
+[
+  {
+    _id: ObjectId('66134bda6d4c48245a8bf202'),
+    roll: 1,
+    name: 'ram',
+    age: 20,
+    div: 'A',
+    sub: [ 'phy', 'che' ]
+  }
+]
+college> db.s2mca.find({name:/^j/});
+[
+  {
+    _id: ObjectId('66134bdb6d4c48245a8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: [ 'phy', 'eng' ]
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: [ 'phy', 'eng' ]
+  }
+]
+college> db.s2mca.find({sub:/che/});
+[
+  {
+    _id: ObjectId('66134bda6d4c48245a8bf202'),
+    roll: 1,
+    name: 'ram',
+    age: 20,
+    div: 'A',
+    sub: [ 'phy', 'che' ]
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf202'),
+    roll: 1,
+    name: 'ram',
+    age: 20,
+    div: 'A',
+    sub: [ 'phy', 'che' ]
+  }
+]
+college> db.course.find({ code: /ENG/ });
+
+college> db.course.find({ code: /ENG/ });
+
+college> db.s2mca.find({name:/june/i});
+[
+  {
+    _id: ObjectId('66134bdb6d4c48245a8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: [ 'phy', 'eng' ]
+  },
+  {
+    _id: ObjectId('6613bbdfc3574f932e8bf204'),
+    roll: 3,
+    name: 'june',
+    age: 21,
+    div: 'c',
+    sub: [ 'phy', 'eng' ]
+  }
+]
+...     { name: "Abin", gender: "male", department: "Computer Science", marks: 85 },
+...     { name: "Alvin", gender: "female", department: "Computer Science", marks: 90 },
+...     { name: "Bibin", gender: "male", department: "Mathematics", marks: 78 },
+...     { name: "Nandhu", gender: "female", department: "Mathematics", marks: 95 },
+...     { name: "Mahesh", gender: "male", department: "Physics", marks: 70 },
+...     { name: "Suresh", gender: "female", department: "Physics", marks: 88 }
+... ])l
+Uncaught:
+SyntaxError: Missing semicolon. (8:2)
+
+  6 |     { name: "Mahesh", gender: "male", department: "Physics", marks: 70 },
+  7 |     { name: "Suresh", gender: "female", department: "Physics", marks: 88 }
+> 8 | ])l
+    |   ^
+  9 |
+
+univ> db.s1mca.insertMany([
+...     { name: "Abin", gender: "male", department: "Computer Science", marks: 85 },
+...     { name: "Alvin", gender: "female", department: "Computer Science", marks: 90 },
+...     { name: "Bibin", gender: "male", department: "Mathematics", marks: 78 },
+...     { name: "Nandhu", gender: "female", department: "Mathematics", marks: 95 },
+...     { name: "Mahesh", gender: "male", department: "Physics", marks: 70 },
+...     { name: "Suresh", gender: "female", department: "Physics", marks: 88 }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6613c038c3574f932e8bf205'),
+    '1': ObjectId('6613c038c3574f932e8bf206'),
+    '2': ObjectId('6613c038c3574f932e8bf207'),
+    '3': ObjectId('6613c038c3574f932e8bf208'),
+    '4': ObjectId('6613c038c3574f932e8bf209'),
+    '5': ObjectId('6613c038c3574f932e8bf20a')
+  }
+}
+univ> db.s1mca.find({ gender: "female" })
+[
+  {
+    _id: ObjectId('6613c038c3574f932e8bf206'),
+    name: 'Alvin',
+    gender: 'female',
+    department: 'Computer Science',
+    marks: 90
+  },
+  {
+    _id: ObjectId('6613c038c3574f932e8bf208'),
+    name: 'Nandhu',
+    gender: 'female',
+    department: 'Mathematics',
+    marks: 95
+  },
+  {
+    _id: ObjectId('6613c038c3574f932e8bf20a'),
+    name: 'Suresh',
+    gender: 'female',
+    department: 'Physics',
+    marks: 88
+  }
+]
+univ> db.s1mca.find({ gender: "male" })
+[
+  {
+    _id: ObjectId('6613c038c3574f932e8bf205'),
+    name: 'Abin',
+    gender: 'male',
+    department: 'Computer Science',
+    marks: 85
+  },
+  {
+    _id: ObjectId('6613c038c3574f932e8bf207'),
+    name: 'Bibin',
+    gender: 'male',
+    department: 'Mathematics',
+    marks: 78
+  },
+  {
+    _id: ObjectId('6613c038c3574f932e8bf209'),
+    name: 'Mahesh',
+    gender: 'male',
+    department: 'Physics',
+    marks: 70
+  }
+]
+univ> db.s1mca.aggregate([
+...     { $group: { _id: "$department", total_students: { $sum: 1 } } }
+... ])
+[
+  { _id: 'Computer Science', total_students: 2 },
+  { _id: 'Mathematics', total_students: 2 },
+  { _id: 'Physics', total_students: 2 }
+]
+...     { $match: { gender: "male" } },
+...     { $group: { _id: "$department", total_male_students: { $sum: 1 } } }
+... ])
+[
+  { _id: 'Computer Science', total_male_students: 1 },
+  { _id: 'Mathematics', total_male_students: 1 },
+  { _id: 'Physics', total_male_students: 1 }
+]
+...     { $group: { _id: "$department", avg_marks: { $avg: "$marks" } } }
+... ])
+[
+  { _id: 'Mathematics', avg_marks: 86.5 },
+  { _id: 'Computer Science', avg_marks: 87.5 },
+  { _id: 'Physics', avg_marks: 79 }
+]
+univ> test> use college;
+Uncaught:
+SyntaxError: Missing semicolon. (1:9)
+
+> 1 | test> use college;
+    |          ^
+  2 |
+
+univ> switched to db college
+Uncaught:
+SyntaxError: Missing semicolon. (1:8)
+
+> 1 | switched to db college
+    |         ^
+  2 |
+
+univ>
