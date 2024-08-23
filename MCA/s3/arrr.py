@@ -1,0 +1,32 @@
+import numpy as np
+array_1= np.array([
+    [1, 2],
+    [5, 6]])
+array_2= np.array([
+    [12, 32],
+    [55, 86]])
+print("Full array:")
+print(array_1)
+print()
+print(array_2)
+print()
+print("Matrix Addition:")
+print(np.add(array_1,array_2))
+print()
+print("Matrix Subtraction:")
+print(np.subtract(array_1,array_2))
+print()
+print("Matrix Multiplication of each elements:")
+print(np.multiply(array_1,array_2)) 
+print()
+print("Matrix Division:")
+print(np.divide(array_2,array_1)) 
+print()
+print("Matrix Multiplication:")
+print(np.dot(array_2,array_1)) 
+print()
+print("Matrix Transpose:")
+print(array_1.transpose())
+print()
+print("Sum of Diagonal elements:")
+print(np.trace(array_1))  
